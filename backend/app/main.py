@@ -55,7 +55,7 @@ if settings.SENTRY_DSN:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("EventPulse starting up...")
+    logger.info("eventlens starting up...")
 
     # Redis is a degradable dependency, not a hard one. Metrics, dashboards and
     # the whole read path are served from Postgres, so a Redis outage (or an
@@ -77,11 +77,11 @@ async def lifespan(app: FastAPI):
     from app.tasks.scheduler import start_scheduler
     start_scheduler()
  
-    logger.info("EventPulse is ready")
+    logger.info("eventlens is ready")
  
     yield
  
-    logger.info("EventPulse shutting down...")
+    logger.info("eventlens shutting down...")
  
     from app.tasks.scheduler import stop_scheduler
     stop_scheduler()
@@ -95,14 +95,14 @@ async def lifespan(app: FastAPI):
     await broadcaster.close()
     await rate_limiter.close()
  
-    logger.info("EventPulse shutdown complete")
+    logger.info("eventlens shutdown complete")
 
 # ---------------------------------------------------------------------------
 # App
 # ---------------------------------------------------------------------------
 
 app = FastAPI(
-    title="EventPulse API",
+    title="eventlens API",
     description="Real-Time Event & Anomaly Analytics Platform",
     version="1.0.0",
     debug=settings.DEBUG,
@@ -188,7 +188,7 @@ app.include_router(health.router,     prefix="/api/v1/health",     tags=["Health
 @app.get("/", tags=["Root"])
 async def root():
     return {
-        "name": "EventPulse API",
+        "name": "eventlens API",
         "version": "1.0.0",
         "status": "running",
         "environment": settings.APP_ENV,

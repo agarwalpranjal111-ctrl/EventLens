@@ -6,7 +6,7 @@ import sys
 import os
 import socket
 
-redis_url = os.getenv("REDIS_URL", "redis://eventpulse_redis:6379/0")
+redis_url = os.getenv("REDIS_URL", "redis://eventlens_redis:6379/0")
 
 # Parse host and port from the URL
 # Expected format: redis://host:port/db
@@ -16,7 +16,7 @@ try:
     host, port = host_port.split(":")
     port = int(port)
 except Exception:
-    host, port = "eventpulse_redis", 6379
+    host, port = "eventlens_redis", 6379
 
 # Try to open a TCP connection — if Redis is up, this succeeds in <1s
 try:

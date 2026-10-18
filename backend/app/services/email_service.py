@@ -72,7 +72,7 @@ class EmailService:
             emoji = severity_emoji.get(severity, "📊")
             
             # Prepare email
-            subject = f"{emoji} [EventPulse] {severity.upper()}: {alert_name}"
+            subject = f"{emoji} [eventlens] {severity.upper()}: {alert_name}"
             
             # HTML body
             html_body = self._create_alert_html(
@@ -84,7 +84,7 @@ class EmailService:
             
             # Plain text fallback
             plain_body = f"""
-EventPulse Alert Notification
+eventlens Alert Notification
 
 Alert: {alert_name}
 Severity: {severity.upper()}
@@ -97,7 +97,7 @@ Context:
 {context if context else 'N/A'}
 
 ---
-This is an automated notification from EventPulse Analytics Platform.
+This is an automated notification from eventlens Analytics Platform.
             """.strip()
             
             # Send email
@@ -160,7 +160,7 @@ This is an automated notification from EventPulse Analytics Platform.
 <body>
     <div class="container">
         <div class="header">
-            <h1 style="margin: 0;">EventPulse Alert</h1>
+            <h1 style="margin: 0;">eventlens Alert</h1>
         </div>
         <div class="content">
             <h2>{alert_name}</h2>
@@ -175,7 +175,7 @@ This is an automated notification from EventPulse Analytics Platform.
             {context_html}
         </div>
         <div class="footer">
-            <p>This is an automated notification from EventPulse Analytics Platform.</p>
+            <p>This is an automated notification from eventlens Analytics Platform.</p>
         </div>
     </div>
 </body>

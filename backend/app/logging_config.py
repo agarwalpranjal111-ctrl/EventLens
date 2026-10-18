@@ -61,7 +61,7 @@ def setup_logging():
     root_logger.addHandler(console_handler)
     
     # File handler (all logs)
-    log_file = log_dir / f"eventpulse_{datetime.now().strftime('%Y%m%d')}.log"
+    log_file = log_dir / f"eventlens_{datetime.now().strftime('%Y%m%d')}.log"
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
