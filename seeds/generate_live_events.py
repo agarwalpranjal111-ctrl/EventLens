@@ -1,5 +1,5 @@
 """
-EventPulse — rolling demo traffic
+eventlens — rolling demo traffic
 =================================
 
 Posts a small batch of realistic events through the public ingestion API so a
@@ -21,11 +21,11 @@ from seed_demo_data rather than restated, so the historical seed and the live
 trickle can never drift apart.
 
 Usage:
-    EVENTPULSE_API_KEY=ep_live_... python seeds/generate_live_events.py
+    eventlens_API_KEY=ep_live_... python seeds/generate_live_events.py
 
 Environment:
-    EVENTPULSE_API_KEY   required — the ingestion key to attribute events to
-    EVENTPULSE_ENDPOINT  default https://eventpulse-analytics-backend.onrender.com
+    eventlens_API_KEY   required — the ingestion key to attribute events to
+    eventlens_ENDPOINT  default https://eventlens-analytics-backend.onrender.com
     WINDOW_MINUTES       default 60   — spread events across this many minutes
     EVENT_COUNT          default 70   — roughly how many events to send
 """
@@ -45,9 +45,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from seed_demo_data import Visitor, make_event, traffic_multiplier  # noqa: E402
 
 ENDPOINT = os.environ.get(
-    "EVENTPULSE_ENDPOINT", "https://eventpulse-analytics-backend.onrender.com"
+    "eventlens_ENDPOINT", "https://eventlens-analytics-backend.onrender.com"
 ).rstrip("/")
-API_KEY = os.environ.get("EVENTPULSE_API_KEY", "").strip()
+API_KEY = os.environ.get("eventlens_API_KEY", "").strip()
 WINDOW_MINUTES = int(os.environ.get("WINDOW_MINUTES", "60"))
 EVENT_COUNT = int(os.environ.get("EVENT_COUNT", "70"))
 
@@ -92,7 +92,7 @@ def build_batch() -> list[dict]:
 
 def main() -> int:
     if not API_KEY:
-        print("EVENTPULSE_API_KEY is not set", file=sys.stderr)
+        print("eventlens_API_KEY is not set", file=sys.stderr)
         return 1
 
     events = build_batch()

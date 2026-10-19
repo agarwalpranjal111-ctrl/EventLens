@@ -1,5 +1,5 @@
 """
-EventPulse — Demo Data Generator
+eventlens — Demo Data Generator
 ================================
 
 Populates the platform with events that look like they came from a real B2B
@@ -23,7 +23,7 @@ Usage:
     python seeds/seed_demo_data.py
 
 Environment:
-    EP_API       default https://eventpulse-analytics-backend.onrender.com/api/v1
+    EP_API       default https://eventlens-analytics-backend.onrender.com/api/v1
     EP_EMAIL     account to own the demo keys
     EP_PASSWORD
     DATABASE_URL asyncpg URL for the bulk event insert
@@ -41,7 +41,7 @@ from datetime import datetime, timedelta, timezone
 
 import httpx
 
-API = os.environ.get("EP_API", "https://eventpulse-analytics-backend.onrender.com/api/v1")
+API = os.environ.get("EP_API", "https://eventlens-analytics-backend.onrender.com/api/v1")
 EMAIL = os.environ.get("EP_EMAIL", "ayushishahi14072004@gmail.com")
 PASSWORD = os.environ.get("EP_PASSWORD", "String@12345")
 DB_URL = os.environ.get("DATABASE_URL", "")
@@ -302,7 +302,7 @@ async def main() -> None:
     if not DB_URL:
         sys.exit("DATABASE_URL is required")
 
-    print(f"\nSeeding EventPulse demo data -> {API}\n")
+    print(f"\nSeeding eventlens demo data -> {API}\n")
 
     # Imported here, not at module scope: generate_live_events.py reuses this
     # module purely for the event taxonomy and talks to the API over HTTP, so

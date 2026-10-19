@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "eventpulse-python"
+name = "eventlens-python"
 version = "1.0.0"
-description = "Official Python SDK for EventPulse Analytics — track events from Django, FastAPI, or any Python app"
+description = "Official Python SDK for eventlens Analytics — track events from Django, FastAPI, or any Python app"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.8"
@@ -17,9 +17,9 @@ fastapi = ["starlette>=0.20"]
 dev = ["pytest", "pytest-mock", "responses"]
 
 [project.urls]
-Homepage = "https://github.com/ayushi-shahi/EventPulse-Analytics"
-"Bug Tracker" = "https://github.com/ayushi-shahi/EventPulse-Analytics/issues"
+Homepage = "https://github.com/ayushi-shahi/eventlens-Analytics"
+"Bug Tracker" = "https://github.com/ayushi-shahi/eventlens-Analytics/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["eventpulse*"]
+include = ["eventlens*"]
